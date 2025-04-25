@@ -3,47 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advanced Quiz App</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="quiz.css"/>
 </head>
 <body>
-  <main class="quiz-app">
-    <header>
-      <h1>🧠 Ultimate Quiz Challenge</h1>
-      <div id="category-selector">
-        <label for="category">Category:</label>
-        <select id="category">
-          <option value="all">All</option>
-          <option value="javascript">JavaScript</option>
-          <option value="html">HTML</option>
-          <option value="science">Science</option>
-        </select>
-      </div>
-      <div id="difficulty-selector">
-        <label for="difficulty">Difficulty:</label>
-        <select id="difficulty">
-          <option value="easy">Easy</option>
-          <option value="medium" selected>Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-      </div>
-    </header>
+  <div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+      <h2 id="question">Question text</h2>
+      <ul>
+        <li><input type="radio" name="answer" id="a" class="answer"/><label for="a" id="a_text">Answer A</label></li>
+        <li><input type="radio" name="answer" id="b" class="answer"/><label for="b" id="b_text">Answer B</label></li>
+        <li><input type="radio" name="answer" id="c" class="answer"/><label for="c" id="c_text">Answer C</label></li>
+        <li><input type="radio" name="answer" id="d" class="answer"/><label for="d" id="d_text">Answer D</label></li>
+      </ul>
+    </div>
+    <button id="submit">Submit</button>
+  </div>
 
-    <section id="quiz-section" aria-live="polite">
-      <div id="timer">Time Left: <span id="time">30</span>s</div>
-      <h2 id="question">Loading question...</h2>
-      <div id="answers" class="answers-container"></div>
-      <div id="explanation" class="hidden"></div>
-    </section>
-
-    <footer>
-      <button id="prev-btn">Previous</button>
-      <button id="next-btn">Next</button>
-      <button id="submit-btn">Submit Quiz</button>
-      <div id="score-display" class="hidden">Your score: <span id="score">0</span></div>
-    </footer>
-  </main>
-
-  <script src="script.js" type="module"></script>
+  <script src="quiz.js"></script>
 </body>
 </html>
+

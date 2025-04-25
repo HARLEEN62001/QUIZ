@@ -1,115 +1,77 @@
-const questions = [
-    {
-      question: "What is the capital of France?",
-      answers: [
-        { text: "Paris", correct: true },
-        { text: "Berlin", correct: false },
-        { text: "Madrid", correct: false },
-        { text: "Rome", correct: false }
-      ]
-    },
-    {
-      question: "Which language runs in a web browser?",
-      answers: [
-        { text: "Java", correct: false },
-        { text: "C", correct: false },
-        { text: "Python", correct: false },
-        { text: "JavaScript", correct: true }
-      ]
-    },
-    {
-      question: "Who painted the Mona Lisa?",
-      answers: [
-        { text: "Van Gogh", correct: false },
-        { text: "Da Vinci", correct: true },
-        { text: "Picasso", correct: false },
-        { text: "Michelangelo", correct: false }
-      ]
-    }
-  ];
-  
-  const questionElement = document.getElementById('question');
-  const answerButtons = document.getElementById('answer-buttons');
-  const nextButton = document.getElementById('next-btn');
-  
-  let currentQuestionIndex = 0;
-  let score = 0;
-  
-  function startQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    nextButton.innerHTML = 'Next';
-    showQuestion();
+const quizData = [
+  {
+    question: "What is the capital of France?",
+    a: "London",
+    b: "Berlin",
+    c: "Paris",
+    d: "Madrid",
+    correct: "c"
+  },
+  {
+    question: "Who wrote 'Hamlet'?",
+    a: "Shakespeare",
+    b: "Charles Dickens",
+    c: "J.K. Rowling",
+    d: "Mark Twain",
+    correct: "a"
+  },
+  {
+    question: "Which is the largest planet?",
+    a: "Earth",
+    b: "Jupiter",
+    c: "Mars",
+    d: "Venus",
+    correct: "b"
   }
-  
-  function showQuestion() {
-    resetState();
-    let currentQuestion = questions[currentQuestionIndex];
-    questionElement.innerText = currentQuestion.question;
-  
-    currentQuestion.answers.forEach(answer => {
-      const button = document.createElement('button');
-      button.innerText = answer.text;
-      button.classList.add('btn');
-      if (answer.correct) {
-        button.dataset.correct = answer.correct;
-      }
-      button.addEventListener('click', selectAnswer);
-      const li = document.createElement('li');
-      li.appendChild(button);
-      answerButtons.appendChild(li);
-    });
-  }
-  
-  function resetState() {
-    nextButton.style.display = 'none';
-    answerButtons.innerHTML = '';
-  }
-  
-  function selectAnswer(e) {
-    const selectedBtn = e.target;
-    const correct = selectedBtn.dataset.correct === 'true';
-  
-    if (correct) {
-      selectedBtn.classList.add('correct');
-      score++;
-    } else {
-      selectedBtn.classList.add('wrong');
-    }
-  
-    Array.from(answerButtons.children).forEach(li => {
-      const btn = li.firstChild;
-      if (btn.dataset.correct === 'true') {
-        btn.classList.add('correct');
-      }
-      btn.disabled = true;
-    });
-  
-    nextButton.style.display = 'block';
-  }
-  
-  function showScore() {
-    resetState();
-    questionElement.innerText = `You scored ${score} out of ${questions.length}!`;
-    nextButton.innerText = 'Play Again';
-    nextButton.style.display = 'block';
-  }
-  
-  function handleNextButton() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-      showQuestion();
-    } else {
-      showScore();
-    }
-  }
-  
-  nextButton.addEventListener('click', () => {
-    if (currentQuestionIndex < questions.length) {
-      handleNextButton();
-    } else {
-      startQuiz();
-    }
+];
+
+let currentQuiz = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const answersEls = document.querySelectorAll(".answer");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+const submitBtn = document.getElementById("submit");
+
+loadQuiz();
+
+function loadQuiz() {
+  deselectAnswers();
+  const current = quizData[currentQuiz];
+  questionEl.innerText = current.question;
+  a_text.innerText = current.a;
+  b_text.innerText = current.b;
+  c_text.innerText = current.c;
+  d_text.innerText = current.d;
+}
+
+function deselectAnswers() {
+  answersEls.forEach(el => el.checked = false);
+}
+
+function getSelected() {
+  let answer;
+  answersEls.forEach(el => {
+    if (el.checked) answer = el.id;
   });
-  
-  startQuiz();
+  return answer;
+}
+
+submitBtn.addEventListener("click", () => {
+  const answer = getSelected();
+  if (answer) {
+    if (answer === quizData[currentQuiz].correct) score++;
+    currentQuiz++;
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerHTML = `
+        <h2>You scored ${score}/${quizData.length} 🎉</h2>
+        <button onclick="location.reload()">Play Again</button>
+      `;
+    }
+  }
+});

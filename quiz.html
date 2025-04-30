@@ -3,47 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advanced Quiz App</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Fun Quiz App</title>
+  <link rel="stylesheet" href="quiz.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <main class="quiz-app">
-    <header>
-      <h1>🧠 Ultimate Quiz Challenge</h1>
-      <div id="category-selector">
-        <label for="category">Category:</label>
-        <select id="category">
-          <option value="all">All</option>
-          <option value="javascript">JavaScript</option>
-          <option value="html">HTML</option>
-          <option value="science">Science</option>
-        </select>
+  <!-- Animal Decorations -->
+  <div class="animal-container">
+    <img src="https://raw.githubusercontent.com/kaurharpreet0003/quiz-app/main/images/owl.png" alt="Owl" class="animal owl">
+    <img src="https://raw.githubusercontent.com/kaurharpreet0003/quiz-app/main/images/fox.png" alt="Fox" class="animal fox">
+    <img src="https://raw.githubusercontent.com/kaurharpreet0003/quiz-app/main/images/penguin.png" alt="Penguin" class="animal penguin">
+    <img src="https://raw.githubusercontent.com/kaurharpreet0003/quiz-app/main/images/bear.png" alt="Bear" class="animal bear">
+  </div>
+
+  <!-- Decorative Bubbles -->
+  <div class="decoration-container">
+    <div class="floating-bubble"></div>
+    <div class="floating-bubble"></div>
+    <div class="floating-bubble"></div>
+  </div>
+
+  <!-- Quiz Container -->
+  <div class="quiz-wrapper">
+    <div class="quiz-header">
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <div class="question-counter">Question <span id="current-question">1</span> of <span id="total-questions">10</span></div>
       </div>
-      <div id="difficulty-selector">
-        <label for="difficulty">Difficulty:</label>
-        <select id="difficulty">
-          <option value="easy">Easy</option>
-          <option value="medium" selected>Medium</option>
-          <option value="hard">Hard</option>
-        </select>
+      <div class="timer-container">
+        <i class="fas fa-clock"></i>
+        <span id="timer">00:00</span>
       </div>
-    </header>
+      <div class="score-container">
+        <i class="fas fa-star"></i>
+        <span id="score">0</span>
+      </div>
+    </div>
 
-    <section id="quiz-section" aria-live="polite">
-      <div id="timer">Time Left: <span id="time">30</span>s</div>
-      <h2 id="question">Loading question...</h2>
-      <div id="answers" class="answers-container"></div>
-      <div id="explanation" class="hidden"></div>
-    </section>
+    <div class="quiz-content">
+      <div class="question-container">
+        <h2 id="question">Loading question...</h2>
+        <div class="hint-container">
+          <button class="hint-btn" id="hint-btn">
+            <i class="fas fa-lightbulb"></i>
+            Show Hint
+          </button>
+          <div class="hint hidden" id="hint">This is a helpful hint!</div>
+        </div>
+      </div>
 
-    <footer>
-      <button id="prev-btn">Previous</button>
-      <button id="next-btn">Next</button>
-      <button id="submit-btn">Submit Quiz</button>
-      <div id="score-display" class="hidden">Your score: <span id="score">0</span></div>
-    </footer>
-  </main>
+      <div class="options-container" id="options">
+        <!-- Options will be dynamically inserted here -->
+      </div>
+    </div>
 
-  <script src="script.js" type="module"></script>
+    <div class="quiz-controls">
+      <button class="control-btn" id="prev-btn" disabled>
+        <i class="fas fa-arrow-left"></i>
+        Previous
+      </button>
+      <button class="control-btn" id="next-btn">
+        <i class="fas fa-arrow-right"></i>
+        Next
+      </button>
+    </div>
+  </div>
+
+  <!-- Results Modal -->
+  <div class="modal" id="results-modal">
+    <div class="modal-content">
+      <h2>Quiz Complete!</h2>
+      <div class="results-stats">
+        <div class="stat">
+          <i class="fas fa-check-circle"></i>
+          <span id="correct-answers">0</span>
+          <span>Correct</span>
+        </div>
+        <div class="stat">
+          <i class="fas fa-times-circle"></i>
+          <span id="wrong-answers">0</span>
+          <span>Wrong</span>
+        </div>
+        <div class="stat">
+          <i class="fas fa-percentage"></i>
+          <span id="score-percentage">0%</span>
+          <span>Score</span>
+        </div>
+      </div>
+      <div class="results-message" id="results-message">
+        Great job! You've completed the quiz.
+      </div>
+      <div class="results-actions">
+        <button class="action-btn" id="retry-btn">
+          <i class="fas fa-redo"></i>
+          Try Again
+        </button>
+        <button class="action-btn" id="share-btn">
+          <i class="fas fa-share"></i>
+          Share Results
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="quiz.js"></script>
 </body>
 </html>

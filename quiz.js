@@ -110,7 +110,7 @@ const questions = [
     },
     {
         question: "Which element has the chemical symbol 'O'?",
-        options: ["gold", "Silver", "Oxygen", "Osmium"],
+        options: ["gold", "Silver", "Oxyg", "Osmium"],
         correct: 2
     }
 ];

@@ -1,5 +1,5 @@
 // DOM Elements
-const welcomeSection = document.getElementById('getout');
+const welcomeSection = document.getElementById('welcome');
 const categoriesSection = document.getElementById('categories');
 const startQuizBtn = document.querySelector('.start-quiz');
 

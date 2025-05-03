@@ -78,7 +78,7 @@ function createStars() {
         star.className = 'star';
         
         // Random position
-        star.style.left = `${Mat.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
         star.style.top = `${Math.random() * 100}%`;
         
         // Random size

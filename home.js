@@ -61,7 +61,7 @@ function selectAnswer(button, isCorrect, explanation) {
   if (answered) return;
   answered = true;
 
-  Array.from(answersEl.chil).forEach(btn => btn.disabled = true);
+  Array.from(answersEl.children).forEach(btn => btn.disabled = true);
 
   if (isCorrect) {
     button.classList.add('correct');

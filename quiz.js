@@ -2,7 +2,7 @@ const quizData = [
   {
     question: "What is the capital of France?",
     a: "London",
-    b: "Berlin",
+    b: "ohio",
     c: "Paris",
     d: "Madrid",
     correct: "c"

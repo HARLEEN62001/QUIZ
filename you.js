@@ -75,7 +75,7 @@ function createStars() {
 
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
-        star.className = 'star';
+        star.className = 'st';
         
         // Random position
         star.style.left = `${Math.random() * 100}%`;

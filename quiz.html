@@ -38,11 +38,16 @@
             <p>Your final score: <span id="final-score">0</span></p>
             <div class="modal-buttons">
                 <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
-                <button class="restart-btn" onclick="restartQuiz()">Restart</button>
+                <button class="restart-btn" id="restart-btn">Restart</button>
             </div>
         </div>
     </div>
-
-    <script src="quiz.js"></script>
+    <script>
+        document.getElementById("restart-btn").addEventListener("click", restartQuiz);
+      </script>
+      
+    <script src="quiz.js" defer></script>
+    
+      
 </body>
 </html> 

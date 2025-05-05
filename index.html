@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizWhiz AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">QuizWz AI</h1>
+
+        <div id="error-message" class="error-alert" style="display: none;">
+             <p><strong>Error:</strong> <span id="error-text"></span></p>
+        </div>
+
+        <!-- Home Page Section -->
+        <div id="home-page" class="card">
+            <div class="card-header">
+                <h2 class="card-title">Welcome to QuizWhiz AI!</h2>
+                <p class="card-description">Test your knowledge with AI-generated quizzes on various topics.</p>
+            </div>
+            <div class="card-content">
+                <p>Ready to challenge yourself? Select your favorite subject, difficulty level, and the number of questions you want to tackle. Our AI will generate a unique quiz just for you!</p>
+                <p class="small-note">(Note: Question generation is mocked in this version.)</p>
+            </div>
+            <div class="card-footer">
+                <button id="go-to-setup-btn" class="button button-primary">Start Your Quiz Now!</button>
+            </div>
+            <footer class="app-footer">
+                Powered by AI Concepts
+            </footer>
+        </div>
+
+        <!-- Quiz Setup Section -->
+        <div id="quiz-setup" class="card" style="display: none;">
+            <div class="card-header">
+                <h2 class="card-title">Setup Your Quiz</h2>
+                <p class="card-description">Choose a topic, difficulty, and number of questions.</p>
+            </div>
+            <form id="setup-form">
+                <div class="card-content">
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <select id="topic" name="topic" required>
+                            <!-- Options will be populated by JS -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty</label>
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="count">Number of Questions</label>
+                        <select id="count" name="count" required>
+                            <option value="5">5 Questions</option>
+                            <option value="10">10 Questions</option>
+                            <option value="15">15 Questions</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" id="start-quiz-btn" class="button button-primary">
+                        Start Quiz
+                    </button>
+                    <button type="button" id="back-to-home-btn" class="button button-secondary">Back to Home</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Loading Section -->
+        <div id="loading" class="card text-center" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating your quiz...</p>
+        </div>
+
+        <!-- Quiz Playing Section -->
+        <div id="quiz-playing" class="card" style="display: none;">
+            <div class="card-header question-header">
+                <div id="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <h3 id="question-counter" class="question-counter">Question X of Y</h3>
+            </div>
+            <div class="card-content">
+                <p id="question-text" class="question-text">Question text goes here...</p>
+                <div id="options-container" class="options-container">
+                    <!-- Options buttons will be added by JS -->
+                </div>
+            </div>
+            <div class="card-footer">
+                 <button id="submit-answer-btn" class="button button-primary" disabled>Submit Answer</button>
+                 <!-- Next button is hidden initially, shown after answer submission -->
+                 <button id="next-question-btn" class="button button-primary" style="display: none;">Next Question</button>
+                 <button id="finish-quiz-btn" class="button button-primary" style="display: none;">Finish Quiz</button>
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result" class="card text-center" style="display: none;">
+            <div class="card-header">
+                <h2 class="card-title">Quiz Completed!</h2>
+            </div>
+            <div class="card-content">
+                <div id="result-icon" class="result-icon">🏆</div> <!-- Placeholder Icon -->
+                <p id="score-percentage" class="score-percentage">80%</p>
+                <p id="score-details" class="score-details">You answered 8 out of 10 questions correctly.</p>
+                <p id="feedback-message" class="feedback-message">Excellent Work!</p>
+            </div>
+            <div class="card-footer">
+                <button id="restart-quiz-btn" class="button button-primary">
+                    <span class="icon">🔄</span> Restart Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

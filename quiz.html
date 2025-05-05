@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quiz App</title>
-  <link rel="stylesheet" href="quiz.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="quiz-container" id="quiz">
-    <div class="quiz-header">
-      <h2 id="question">Question text</h2>
-      <ul>
-        <li><input type="radio" name="answer" id="a" class="answer"/><label for="a" id="a_text">Answer A</label></li>
-        <li><input type="radio" name="answer" id="b" class="answer"/><label for="b" id="b_text">Answer B</label></li>
-        <li><input type="radio" name="answer" id="c" class="answer"/><label for="c" id="c_text">Answer C</label></li>
-        <li><input type="radio" name="answer" id="d" class="answer"/><label for="d" id="d_text">Answer D</label></li>
-      </ul>
-    </div>
-    <button id="submit">Submit</button>
-  </div>
+    <div class="black-hole"></div>
+    <div class="stars" id="stars"></div>
+    <div class="particles" id="particles"></div>
 
-  <script src="quiz.js"></script>
+    <div class="container">
+        <div class="quiz-header">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">Time: <span id="timer">30</span>s</div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="quiz-content">
+            <div id="question"></div>
+            <div class="options-container" id="options-container"></div>
+        </div>
+        
+        <div class="controls">
+            <button class="next-btn" id="next-btn" disabled>Next Question</button>
+        </div>
+    </div>
+
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <h2>Quiz Completed!</h2>
+            <p>Your final score: <span id="final-score">0</span></p>
+            <div class="modal-buttons">
+                <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+                <button class="restart-btn" id="restart-btn">Restart</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("restart-btn").addEventListener("click", restartQuiz);
+      </script>
+      
+    <script src="quiz.js" defer></script>
+    
+      
 </body>
-</html>
+</html> 

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Home</title>
+    <link rel="stylesheet" href="you.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="earth-background" aria-hidden="true"></div>
+    <div class="earth-glow" aria-hidden="true"></div>
+    <div class="earth-overlay" aria-hidden="true"></div>
+    <div class="black-hole" aria-hidden="true"></div>
+    <div class="stars" id="stars" aria-hidden="true"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+    <div class="galaxy-overlay" aria-hidden="true"></div>
+
+    <div class="container">
+        <div class="home-content">
+            <h1>Welcome to Quiz App!</h1>
+            <p>Test your knowledge with our fun and interactive quizzes.</p>
+            
+            <div class="quiz-categories">
+                <h2>Choose Your Quiz</h2>
+                <div class="category-grid">
+                    <div class="category-card" data-category="general">
+                        <i class="fas fa-globe-americas"></i>
+                        <h3>General Knowledge</h3>
+                        <p>Test your knowledge about various topics</p>
+                    </div>
+                    <div class="category-card" data-category="science">
+                        <i class="fas fa-atom"></i>
+                        <h3>Science</h3>
+                        <p>Explore the wonders of science</p>
+                    </div>
+                    <div class="category-card" data-category="history">
+                        <i class="fas fa-hourglass-half"></i>
+                        <h3>History</h3>
+                        <p>Journey through time and events</p>
+                    </div>
+                    <div class="category-card" data-category="space">
+                        <i class="fas fa-meteor"></i>
+                        <h3>Space</h3>
+                        <p>Discover the mysteries of the universe</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="start-btn" onclick="window.location.href='quiz.html'">Start Quiz</button>
+                <button class="instructions-btn" onclick="showInstructions()">Instructions</button>
+            </div>
+        </div>
+
+        <div class="reviews-section">
+            <h2>What Our Users Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Amazing quiz app! The space theme is mesmerizing."</p>
+                    <div class="reviewer">
+                        <img src="https://i.pravatar.cc/50?img=1" alt="User" class="reviewer-img">
+                        <div class="reviewer-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Space Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The animations are stunning! Highly recommended!"</p>
+                    <div class="reviewer">
+                        <img src="https://i.pravatar.cc/50?img=2" alt="User" class="reviewer-img">
+                        <div class="reviewer-info">
+                            <h4>Mike Chen</h4>
+                            <p>Quiz Master</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"Great variety of questions. Love the galaxy theme!"</p>
+                    <div class="reviewer">
+                        <img src="https://i.pravatar.cc/50?img=3" alt="User" class="reviewer-img">
+                        <div class="reviewer-info">
+                            <h4>Emma Davis</h4>
+                            <p>Science Teacher</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <span class="about-label">About Us</span>
+            <h2><i class="fas fa-user-astronaut" onclick="showAbout()"></i></h2>
+        </div>
+    </div>
+
+    <div id="instructions-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeInstructions()">&times;</span>
+            <h2>How to Play</h2>
+            <ul>
+                <li>Choose a quiz category that interests you</li>
+                <li>Each quiz has 10 questions</li>
+                <li>You have 30 seconds per question</li>
+                <li>Select the correct answer from the options</li>
+                <li>Get points for correct answers</li>
+                <li>Try to get the highest score!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAbout()">&times;</span>
+            <h2><i class="fas fa-user-astronaut"></i> About Us</h2>
+            <div class="about-content">
+                <p><i class="fas fa-rocket"></i> Welcome to our interactive quiz platform! We're dedicated to making learning fun and engaging through our space-themed quiz experience.</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-users"></i> Created by:</p>
+                    <p><i class="fas fa-user"></i> <span>Harleen Kaur</span></p>
+                    <p><i class="fas fa-user"></i> <span>Lavanya</span></p>
+                    <p><i class="fas fa-user"></i> <span>Kiran</span></p>
+                    <p><i class="fas fa-envelope"></i> Contact: <a href="mailto:kaurharleen95927@gmail.com">kaurharleen95927@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="you.js"></script>
+</body>
+</html> 

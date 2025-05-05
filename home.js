@@ -57,7 +57,7 @@ function showQuestion() {
   startTimer();
 }
 
-function selectAnswer(button, isCorrect, explanation) {
+function selectAnswer(buton, isCorrect, explanation) {
   if (answered) return;
   answered = true;
 

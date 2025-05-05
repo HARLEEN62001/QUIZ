@@ -1,0 +1,396 @@
+:root {
+    --background: #f0f4f8; /* Light gray-blue */
+    --foreground: #334155; /* Dark gray-blue */
+    --card-background: #ffffff; /* White */
+    --card-foreground: #334155; /* Dark gray-blue */
+    --primary: #3b82f6; /* Bright blue */
+    --primary-foreground: #ffffff; /* White */
+    --secondary-background: #e2e8f0; /* Lighter gray-blue */
+    --secondary-foreground: #334155; /* Dark gray-blue */
+    --muted: #cbd5e1; /* Medium gray-blue */
+    --muted-foreground: #64748b; /* Gray */
+    --accent: #10b981; /* Green */
+    --accent-foreground: #ffffff; /* White */
+    --destructive: #ef4444; /* Red */
+    --destructive-foreground: #fef2f2; /* Off-white */
+    --border: #cbd5e1; /* Medium gray-blue */
+    --input-border: #cbd5e1; /* Medium gray-blue */
+    --ring: #3b82f6; /* Bright blue */
+    --radius: 0.5rem;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    margin: 0;
+    padding: 1.5rem; /* Reduced padding */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* Slightly wider */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--card-background);
+    color: var(--card-foreground);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    width: 100%;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background-color: rgba(0, 0, 0, 0.02); /* Subtle background */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+}
+
+.card-description {
+    font-size: 1rem;
+    color: var(--muted-foreground);
+    margin: 0;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.card-content p:last-child {
+    margin-bottom: 0;
+}
+
+.small-note {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    margin-top: 1rem;
+}
+
+.card-footer {
+    padding: 1rem 1.5rem; /* Consistent padding */
+    border-top: 1px solid var(--border);
+    background-color: rgba(0, 0, 0, 0.02);
+    display: flex;
+    justify-content: center; /* Center button(s) */
+    gap: 1rem; /* Space between buttons if multiple */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Button Styles */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    border-radius: calc(var(--radius) - 2px);
+    font-size: 1rem; /* Slightly larger base font size */
+    font-weight: 500;
+    padding: 0.75rem 1.5rem; /* Larger padding */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-decoration: none; /* Remove underline from button links */
+    min-width: 120px; /* Minimum width */
+}
+.button:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+.button-primary:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--primary) 90%, black);
+}
+
+.button-secondary {
+    background-color: var(--secondary-background);
+    color: var(--secondary-foreground);
+    border: 1px solid var(--input-border);
+}
+.button-secondary:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--secondary-background) 90%, black);
+}
+
+.button-destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+}
+.button-destructive:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--destructive) 90%, black);
+}
+
+.button-accent {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+}
+.button-accent:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--accent) 90%, black);
+}
+
+.button-outline {
+    background-color: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--input-border);
+}
+.button-outline:hover:not(:disabled) {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    border-color: var(--accent);
+}
+
+/* Form Styles */
+#setup-form .card-content {
+    display: grid;
+    gap: 1.5rem; /* Increased gap */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.form-group select {
+    height: 2.5rem; /* 40px */
+    width: 100%;
+    border-radius: calc(var(--radius) - 2px);
+    border: 1px solid var(--input-border);
+    background-color: var(--card-background);
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    cursor: pointer;
+}
+.form-group select:focus {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-color: var(--ring);
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 4px solid var(--secondary-background);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto 1rem auto; /* Add spacing */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Quiz Playing Styles */
+.question-header {
+    background-color: var(--card-background);
+}
+
+#progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--secondary-background);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%; /* Starts at 0, updated by JS */
+    background-color: var(--primary);
+    transition: width 0.3s ease-in-out;
+}
+
+.question-counter {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
+    text-align: center;
+    margin: 0;
+}
+
+.question-text {
+    font-size: 1.25rem; /* Larger question text */
+    font-weight: 500;
+    margin-bottom: 2rem; /* More space below question */
+    text-align: center;
+    color: var(--foreground);
+}
+
+.options-container {
+    display: grid;
+    gap: 0.75rem; /* Space between option buttons */
+}
+
+.option-button {
+    width: 100%;
+    justify-content: flex-start; /* Align text to the left */
+    text-align: left;
+    padding: 0.75rem 1rem; /* Adjust padding */
+    height: auto; /* Allow button height to adjust */
+    min-height: 2.5rem; /* Minimum height */
+    border: 1px solid var(--input-border);
+    background-color: var(--card-background);
+    color: var(--foreground);
+    position: relative; /* For icon positioning */
+}
+.option-button:hover:not(:disabled):not(.selected):not(.answered) {
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle hover */
+}
+.option-button.selected:not(.answered) {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+}
+.option-button.correct {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    border-color: var(--accent);
+}
+.option-button.incorrect {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+    border-color: var(--destructive);
+}
+.option-button.disabled:not(.correct):not(.incorrect) {
+    opacity: 0.6;
+    background-color: var(--secondary-background);
+    cursor: not-allowed;
+}
+.option-button .icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+.option-button.correct .icon::before { content: '✅'; }
+.option-button.incorrect .icon::before { content: '❌'; }
+
+/* Result Styles */
+.result-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+.score-percentage {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.score-details {
+    font-size: 1.1rem;
+    color: var(--muted-foreground);
+    margin-bottom: 1.5rem;
+}
+.feedback-message {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.result-icon.excellent, .score-percentage.excellent, .feedback-message.excellent { color: var(--accent); }
+.result-icon.good, .score-percentage.good, .feedback-message.good { color: var(--primary); }
+.result-icon.practice, .score-percentage.practice, .feedback-message.practice { color: var(--destructive); }
+
+/* Error Alert */
+.error-alert {
+    background-color: var(--destructive-foreground);
+    color: var(--destructive);
+    border: 1px solid var(--destructive);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+.error-alert p {
+    margin: 0;
+}
+.error-alert strong {
+    margin-right: 0.5rem;
+}
+
+/* Footer */
+.app-footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+}
+
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .card-header, .card-content, .card-footer {
+        padding: 1rem;
+    }
+    .button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+    .question-text {
+        font-size: 1.1rem;
+    }
+}

@@ -64,7 +64,7 @@ body {
     position: absolute;
     background: #fff;
     border-radius: 50%;
-    animation: twinkle var(--duration) infinite;
+    animation: twin var(--duration) infinite;
     opacity: 0;
 }
 

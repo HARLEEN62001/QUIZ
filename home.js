@@ -170,7 +170,7 @@ particlesJS('particles-js', {
         },
         size: {
             value: 3,
-            random: true
+            random: tr
         },
         line_linked: {
             enable: true,

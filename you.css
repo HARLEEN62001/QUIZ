@@ -89,7 +89,7 @@ body {
 .star {
     position: absolute;
     background: white;
-    border-radius: 50%;
+    border-radius: 45%;
     animation: twinkle var(--duration) infinite;
     opacity: 0;
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);

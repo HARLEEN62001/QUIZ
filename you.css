@@ -103,7 +103,7 @@ body {
 /* Nebulae */
 .nebula {
     position: absolute;
-    border-radius: 45%;
+    border-radius: 50%;
     filter: blur(40px);
     opacity: 0.3;
     animation: pulse-nebula 10s infinite alternate;

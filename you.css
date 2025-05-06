@@ -2,8 +2,11 @@
 body {
     background-color: #000;
     color: #fff;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 /* Enhanced Professional Background */
@@ -14,7 +17,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: rgb(197, 49, 49);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     overflow: hidden;
 }
 
@@ -72,13 +75,15 @@ body {
         radial-gradient(circle at 70% 70%, rgba(0, 191, 255, 0.2) 0%, transparent 50%);
     animation: rotate-galaxy 120s linear infinite;
     transform-origin: center;
+    filter: blur(1px);
 }
 
-/* Stars */
+/* Enhanced Stars */
 .stars {
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
 .star {
@@ -87,6 +92,7 @@ body {
     border-radius: 50%;
     animation: twinkle var(--duration) infinite;
     opacity: 0;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
 .star::before {
@@ -98,15 +104,17 @@ body {
     height: 100%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
     transform: translate(-50%, -50%);
+    filter: blur(1px);
 }
 
-/* Nebulae */
+/* Enhanced Nebulae */
 .nebula {
     position: absolute;
     border-radius: 50%;
     filter: blur(40px);
     opacity: 0.3;
     animation: pulse-nebula 10s infinite alternate;
+    mix-blend-mode: screen;
 }
 
 .nebula:nth-child(1) {
@@ -146,34 +154,42 @@ body {
     opacity: 0;
 }
 
+/* Enhanced Animations */
 @keyframes rotate-galaxy {
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
     }
     100% {
-        transform: rotate(360deg);
+        transform: rotate(360deg) scale(1);
     }
 }
 
 @keyframes twinkle {
     0%, 100% {
         opacity: 0;
-        transform: scale(0.5);
+        transform: scale(0.5) rotate(0deg);
     }
     50% {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) rotate(180deg);
     }
 }
 
 @keyframes pulse-nebula {
     0% {
-        transform: scale(1);
+        transform: scale(1) translate(0, 0);
         opacity: 0.3;
     }
-    100% {
-        transform: scale(1.2);
+    50% {
+        transform: scale(1.2) translate(10px, 10px);
         opacity: 0.5;
+    }
+    100% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.3;
     }
 }
 
@@ -524,8 +540,8 @@ body {
 .category-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 0.8rem;
+    border-radius: 15px;
+    padding: 20px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -540,26 +556,21 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .category-card:hover::before {
-    left: 100%;
+    opacity: 1;
 }
 
 .category-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .category-card i {
@@ -718,38 +729,39 @@ body {
 
 /* Enhanced Buttons */
 .btn-primary {
-    background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    padding: 12px 24px;
     border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .btn-primary::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
+    background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
 }
 
 .btn-primary:hover::before {
-    left: 100%;
+    opacity: 1;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations */
@@ -789,7 +801,7 @@ body {
 
     .category-card {
         min-width: 120px;
-        padding: 0.7rem;
+        padding: 15px;
     }
 
     .category-card i {
@@ -831,7 +843,7 @@ body {
 
     .category-card {
         min-width: 110px;
-        padding: 0.6rem;
+        padding: 1rem;
     }
 
     .category-card i {
@@ -939,12 +951,22 @@ body {
 
 /* Update container for better contrast */
 .container {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
-        0 0 30px rgba(255, 255, 255, 0.1),
-        0 0 60px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
 }
 
 .home-content {
@@ -1133,7 +1155,8 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 1rem;
+        margin: 1rem;
     }
 
     .home-content h1 {
@@ -1159,7 +1182,8 @@ body {
 
 @media (max-width: 480px) {
     .container {
-        padding: 15px;
+        padding: 0.8rem;
+        margin: 0.8rem;
     }
 
     .home-content h1 {

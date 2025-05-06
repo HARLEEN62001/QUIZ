@@ -148,6 +148,31 @@ submitBtn.addEventListener('click', showResult);
 // Initialize quiz on page load
 window.addEventListener('DOMContentLoaded', startQuiz);
 
+// Create stars
+function createStars() {
+    const starsContainer = document.getElementById('stars');
+    const numberOfStars = 200; // Adjust this number to control star density
+
+    for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Random position
+        const top = Math.random() * 100;
+        const left = Math.random() * 100;
+        
+        // Random duration between 2 and 4 seconds
+        const duration = 2 + Math.random() * 2;
+        
+        // Set CSS variables
+        star.style.setProperty('--top', `${top}%`);
+        star.style.setProperty('--left', `${left}%`);
+        star.style.setProperty('--duration', `${duration}s`);
+        
+        starsContainer.appendChild(star);
+    }
+}
+
 // Initialize particles.js
 particlesJS('particles-js', {
     particles: {
@@ -159,7 +184,7 @@ particlesJS('particles-js', {
             }
         },
         color: {
-            value: '#e96d71'
+            value: '#ffffff'
         },
         shape: {
             type: 'circle'
@@ -175,7 +200,7 @@ particlesJS('particles-js', {
         line_linked: {
             enable: true,
             distance: 150,
-            color: '#e96d71',
+            color: '#ffffff',
             opacity: 0.4,
             width: 1
         },
@@ -217,233 +242,41 @@ particlesJS('particles-js', {
     retina_detect: true
 });
 
-// Animate statistics numbers
-function animateNumbers() {
+// Animate stats numbers
+function animateStats() {
     const stats = document.querySelectorAll('.stat-number');
-    
     stats.forEach(stat => {
         const target = parseInt(stat.getAttribute('data-count'));
         const duration = 2000; // 2 seconds
         const step = target / (duration / 16); // 60fps
         let current = 0;
-        
-        const updateNumber = () => {
+
+        const updateCount = () => {
             current += step;
             if (current < target) {
                 stat.textContent = Math.floor(current);
-                requestAnimationFrame(updateNumber);
+                requestAnimationFrame(updateCount);
             } else {
                 stat.textContent = target;
             }
         };
-        
-        updateNumber();
+
+        updateCount();
     });
 }
 
-// Testimonial slider
-function initTestimonialSlider() {
-    const slider = document.querySelector('.testimonial-slider');
-    const testimonials = document.querySelectorAll('.testimonial');
-    let currentIndex = 0;
-    
-    function slide() {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        slider.scrollTo({
-            left: testimonials[currentIndex].offsetLeft,
-            behavior: 'smooth'
-        });
-    }
-    
-    // Auto slide every 5 seconds
-    setInterval(slide, 5000);
-}
-
-// Smooth scroll for category cards
-document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-        if (!card.classList.contains('coming-soon')) {
-            e.preventDefault();
-            const target = card.getAttribute('href');
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                window.location.href = target;
-            }, 500);
-        }
-    });
-});
-
-// Add hover effect to start button
-const startButton = document.querySelector('.start-button');
-startButton.addEventListener('mouseover', () => {
-    startButton.style.transform = 'translateY(-3px)';
-    startButton.style.boxShadow = '0 5px 20px rgba(233, 109, 113, 0.4)';
-});
-
-startButton.addEventListener('mouseout', () => {
-    startButton.style.transform = 'translateY(0)';
-    startButton.style.boxShadow = 'none';
-});
-
-// Initialize animations when page loads
-window.addEventListener('load', () => {
-    animateNumbers();
-    initTestimonialSlider();
-    
-    // Add fade-in animation to elements
-    document.querySelectorAll('.welcome-card > *').forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-    
-    // Initialize animal positions
-    randomizeAnimalPositions();
-    
-    // Add hover effect to animals
-    document.querySelectorAll('.animal').forEach(animal => {
-        animal.style.cursor = 'pointer';
-    });
-});
-
-// Animal interaction
-document.querySelectorAll('.animal').forEach(animal => {
-    animal.addEventListener('mouseover', () => {
-        animal.style.transform = 'scale(1.2)';
-        animal.style.transition = 'transform 0.3s ease';
-    });
-
-    animal.addEventListener('mouseout', () => {
-        animal.style.transform = 'scale(1)';
-    });
-});
-
-// Random movement for animals
-function randomizeAnimalPositions() {
-    const animals = document.querySelectorAll('.animal');
-    animals.forEach(animal => {
-        const randomX = Math.random() * (window.innerWidth - 100);
-        const randomY = Math.random() * (window.innerHeight - 100);
-        animal.style.left = `${randomX}px`;
-        animal.style.top = `${randomY}px`;
-    });
-}
-
-// Call randomizeAnimalPositions every 30 seconds
-setInterval(randomizeAnimalPositions, 30000);
-
-// DOM Elements
-const homeWrapper = document.querySelector('.home-wrapper');
-const features = document.querySelectorAll('.feature');
-const startBtn = document.querySelector('.start-btn');
-const animals = document.querySelectorAll('.animal');
-const bubbles = document.querySelectorAll('.floating-bubble');
-
-// Initialize animations
-function initAnimations() {
-    // Add entrance animation to home wrapper
-    homeWrapper.style.opacity = '0';
-    homeWrapper.style.transform = 'translateY(20px)';
-    
-    setTimeout(() => {
-        homeWrapper.style.transition = 'all 0.8s ease';
-        homeWrapper.style.opacity = '1';
-        homeWrapper.style.transform = 'translateY(0)';
-    }, 100);
-
-    // Animate features with delay
-    features.forEach((feature, index) => {
-        feature.style.opacity = '0';
-        feature.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            feature.style.transition = 'all 0.5s ease';
-            feature.style.opacity = '1';
-            feature.style.transform = 'translateY(0)';
-        }, 300 + (index * 200));
-    });
-
-    // Add hover effect to start button
-    startBtn.addEventListener('mouseenter', () => {
-        startBtn.style.transform = 'translateY(-5px) scale(1.05)';
-    });
-
-    startBtn.addEventListener('mouseleave', () => {
-        startBtn.style.transform = 'translateY(0) scale(1)';
-    });
-}
-
-// Parallax effect for animals
-function initParallax() {
-    document.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX / window.innerWidth;
-        const mouseY = e.clientY / window.innerHeight;
-
-        animals.forEach((animal, index) => {
-            const speed = 0.1 + (index * 0.05);
-            const x = (mouseX - 0.5) * speed * 100;
-            const y = (mouseY - 0.5) * speed * 100;
-            
-            animal.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    });
-}
-
-// Animate bubbles
-function animateBubbles() {
-    bubbles.forEach((bubble, index) => {
-        const duration = 15 + (index * 5);
-        const delay = index * 2;
-        
-        bubble.style.animation = `floatBubble ${duration}s infinite linear ${delay}s`;
-    });
-}
-
-// Add click effect to features
-features.forEach(feature => {
-    feature.addEventListener('click', () => {
-        feature.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            feature.style.transform = 'scale(1)';
-        }, 200);
-    });
-});
-
-// Add confetti effect when clicking start button
-function createConfetti() {
-    const colors = ['#a8edea', '#fed6e3', '#ffd3b6', '#ffaaa5'];
-    
-    for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        confetti.style.animationDelay = Math.random() * 2 + 's';
-        
-        document.body.appendChild(confetti);
-        
-        setTimeout(() => {
-            confetti.remove();
-        }, 5000);
-    }
-}
-
-startBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    createConfetti();
-    setTimeout(() => {
-        window.location.href = 'quiz.html';
-    }, 1000);
-});
-
-// Initialize all animations
+// Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    initAnimations();
-    initParallax();
-    animateBubbles();
+    createStars();
+    animateStats();
+    
+    // Animate features
+    const features = document.querySelectorAll('.feature-item');
+    features.forEach((feature, index) => {
+        setTimeout(() => {
+            feature.classList.add('show');
+        }, index * 200);
+    });
 });
+
+//

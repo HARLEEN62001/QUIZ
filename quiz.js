@@ -1,4 +1,4 @@
-// Quiz questions (example set, replace or expand as needed)
+// Quiz questions
 const questions = [
     {
         question: "What is the capital of France?",
@@ -14,8 +14,42 @@ const questions = [
         question: "Who wrote 'To be, or not to be'?",
         options: ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
         answer: 1
+    },
+    {
+        question: "What is the largest mammal in the world?",
+        options: ["African Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+        answer: 1
+    },
+    {
+        question: "Which element has the chemical symbol 'O'?",
+        options: ["Gold", "Oxygen", "Osmium", "Oganesson"],
+        answer: 1
+    },
+    {
+        question: "What is the square root of 144?",
+        options: ["10", "12", "14", "16"],
+        answer: 1
+    },
+    {
+        question: "Which country is home to the kangaroo?",
+        options: ["New Zealand", "South Africa", "Australia", "Brazil"],
+        answer: 2
+    },
+    {
+        question: "What is the main component of the Sun?",
+        options: ["Helium", "Hydrogen", "Oxygen", "Carbon"],
+        answer: 1
+    },
+    {
+        question: "Who painted the Mona Lisa?",
+        options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
+        answer: 2
+    },
+    {
+        question: "What is the hardest natural substance on Earth?",
+        options: ["Gold", "Iron", "Diamond", "Platinum"],
+        answer: 2
     }
-    // Add more questions as needed
 ];
 
 let currentQuestion = 0;
@@ -129,12 +163,11 @@ function restartQuiz() {
 }
 
 // Event listeners
-nextBtn.addEventListener('click', nextQuestion);
-
-// If the restart button is dynamically created, ensure this is set up after DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     startQuiz();
-    // If the restart button is in a modal, re-attach event listener
+    nextBtn.addEventListener('click', nextQuestion);
+    
+    // Single event listener for restart button
     const restartBtn = document.getElementById('restart-btn');
     if (restartBtn) {
         restartBtn.addEventListener('click', restartQuiz);

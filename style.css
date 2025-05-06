@@ -1,7 +1,7 @@
 :root {
-    --background: red; /* Light gray-blue */
-    --foreground: red; /* Dark gray-blue */
-    --card-background: red; /* White */
+    --background: #f0f4f8; /* Light gray-blue */
+    --foreground: #334155; /* Dark gray-blue */
+    --card-background: #ffffff; /* White */
     --card-foreground: #334155; /* Dark gray-blue */
     --primary: #3b82f6; /* Bright blue */
     --primary-foreground: #ffffff; /* White */
